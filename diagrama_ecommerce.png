@@ -1,0 +1,26 @@
+digraph "E-commerce_DB" {
+	layout=dot rankdir=LR
+	Cliente [label="Cliente
+(id_cliente, nome, email, telefone, CPF, endereço, data_cadastro)" shape=box]
+	Categoria [label="Categoria
+(id_categoria, nome)" shape=box]
+	Produto [label="Produto
+(id_produto, nome, descrição, preço, estoque, id_categoria)" shape=box]
+	Pedido [label="Pedido
+(id_pedido, id_cliente, data_pedido, status_pedido)" shape=box]
+	ItemPedido [label="ItemPedido
+(id_pedido, id_produto, quantidade, preço_unitário)" shape=box]
+	Pagamento [label="Pagamento
+(id_pagamento, id_pedido, tipo_pagamento, valor_total, status_pagamento)" shape=box]
+	Parcelamento [label="Parcelamento
+(id_parcela, id_pagamento, numero_parcela, valor_parcela, data_vencimento)" shape=box]
+	Entrega [label="Entrega
+(id_entrega, id_pedido, transportadora, prazo, status_entrega)" shape=box]
+	Cliente -> Pedido [label="1:N"]
+	Pedido -> ItemPedido [label="1:N"]
+	Produto -> ItemPedido [label="1:N"]
+	Pedido -> Pagamento [label="1:N"]
+	Pagamento -> Parcelamento [label="1:N"]
+	Pedido -> Entrega [label="1:1"]
+	Produto -> Categoria [label="N:1"]
+}
