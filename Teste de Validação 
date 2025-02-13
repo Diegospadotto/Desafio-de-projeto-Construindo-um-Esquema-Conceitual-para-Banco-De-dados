@@ -1,0 +1,16 @@
+- Inserção de Dados
+
+INSERT INTO Cliente (nome, email, telefone, CPF, endereco) 
+VALUES ('Diego Souza', 'diego@email.com', '(11) 99999-9999', '123.456.789-10', 'Rua Exemplo, 123, São Paulo - SP');
+
+INSERT INTO Categoria (nome) VALUES ('Eletrônicos'), ('Moda'), ('Livros');
+
+INSERT INTO Produto (nome, descricao, preco, estoque, id_categoria) 
+VALUES ('Smartphone XYZ', 'Smartphone com 128GB de armazenamento', 1999.99, 50, 1);
+
+- Consultas para verificar pedidos de um cliente 
+
+SELECT p.id_pedido, p.data_pedido, p.status_pedido 
+FROM Pedido p 
+JOIN Cliente c ON p.id_cliente = c.id_cliente 
+WHERE c.nome = 'Diego Souza';
